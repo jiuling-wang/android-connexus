@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Connexus</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_view_all_streams">ViewAllStreamsActivity</string>
+    <string name="title_activity_view_single_stream">ViewSingleStreamActivity</string>
+    <string name="title_activity_view_nearby_image">ViewNearbyImageActivity</string>
+    <string name="title_activity_view_subscribed_streams">ViewSubscribedStreamsActivity</string>
+    <string name="title_activity_view_search_result">ViewSearchResultActivity</string>
+    <string name="title_activity_upload_image">UploadImageActivity</string>
+    <string name="title_activity_use_camera">UseCameraActivity</string>
+    <string name="search">Search</string>
+    <string name="subscribe">My Subscribed Streams</string>
+    <string name="nearby">See nearby</string>
+    <string name="view_single_stream">View A Stream: </string>
+    <string name="morePictures">more Pictures</string>
+    <string name="upload">Upload an Image</string>
+    <string name="back">View All Streams</string>
+    <string name="camera">Use Camera</string>
+    <string name="library">Choose from your library</string>
+    <string name="addMsg">Add a meggage and/or tags</string>
+
+</resources>

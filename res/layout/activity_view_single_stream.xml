@@ -1,0 +1,56 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".ViewSingleStreamActivity" >
+
+    <TextView
+        android:id="@+id/single_stream_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/view_single_stream" />
+    <GridView 
+    	android:id="@+id/single_stream_gridview"
+    	android:layout_below="@id/single_stream_textview"
+    	android:layout_width="fill_parent" 
+    	android:layout_height="wrap_content"
+    	android:columnWidth="100dp"
+    	android:numColumns="4"
+    	android:verticalSpacing="10dp"
+    	android:horizontalSpacing="10dp"
+    	android:stretchMode="columnWidth"
+    	android:gravity="center"
+	/>
+    <Button
+        android:id="@+id/single_stream_more_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/single_stream_gridview" 
+        android:text="@string/morePictures"
+        android:verticalSpacing="10dp"
+        android:onClick="viewMorePictures"
+        />
+    <Button
+        android:id="@+id/single_stream_upload_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/single_stream_more_button" 
+        android:text="@string/upload"
+        android:verticalSpacing="10dp"
+        android:onClick="uploadNewImage"
+        />
+    <Button
+        android:id="@+id/single_stream_back_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/single_stream_upload_button" 
+        android:text="@string/back"
+        android:verticalSpacing="10dp"
+        android:onClick="gotoViewAllStreams"
+        />
+
+</RelativeLayout>
