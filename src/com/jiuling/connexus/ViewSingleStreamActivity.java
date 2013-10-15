@@ -29,7 +29,7 @@ public class ViewSingleStreamActivity extends Activity {
 				ViewAllStreamsActivity.STREAMID, 0);
 		final String streamName = intent
 				.getStringExtra(ViewAllStreamsActivity.STREAMNAME);
-		
+		WebUtility.increaseStreamView(streamId, streamName);
 		
 		TextView textView = (TextView) findViewById(R.id.single_stream_textview);
 		textView.setText(textView.getText() + streamName);

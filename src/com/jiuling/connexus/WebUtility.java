@@ -60,9 +60,9 @@ public class WebUtility {
 		}
 	}
 	
-	public void increaseStreamView(Long streamId, String streamName){
+	public static void increaseStreamView(Long streamId, String streamName){
 		String apiUrl = "http://jiuling-connexus.appspot.com/incStreamViews?streamId="+streamId+"&streamName="+streamName;
-		makeHTTPPOSTRequest(apiUrl, null);
+		makeHTTPPOSTRequest(apiUrl, "dummy");
 	}
 	public static ArrayList<Stream> getStreams(String type,String keyword, String username){
 		String apiUrl = "http://jiuling-connexus.appspot.com/mobileGetStreams?type="+type+"&keyword="+keyword+"&username="+username;
