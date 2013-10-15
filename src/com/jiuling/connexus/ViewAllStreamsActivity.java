@@ -105,6 +105,29 @@ public class ViewAllStreamsActivity extends Activity {
 	}
 	
 	public void gotoSubscribed(View view){
+		if (!WebUtility.userAvailable){
+			Intent intent = new Intent(this,MainActivity.class);
+			startActivity(intent);
+		}else{
+			GridView gridView = (GridView)findViewById(R.id.all_stream_gridview);
+			final ArrayList<Stream> result = WebUtility.getStreams("subscribed", null, WebUtility.userName);
+
+			gridView.setAdapter(new ImageTextAdapter(this,result));
+			
+			gridView.setOnItemClickListener(new OnItemClickListener() {
+		        public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+		            //Toast.makeText(ViewAllStreamsActivity.this, "" + position, Toast.LENGTH_SHORT).show();
+		        	Intent intent = new Intent(v.getContext(),ViewSingleStreamActivity.class);
+		        	Long streamId = result.get(position).id;
+		        	String streamName = result.get(position).name;
+		        	intent.putExtra(STREAMID, streamId);
+		        	intent.putExtra(STREAMNAME, streamName);
+		        	startActivity(intent);
+		        }
+
+		    });
+
+		}
 	
 	}
 	

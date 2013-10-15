@@ -3,7 +3,9 @@
     package="com.jiuling.connexus"
     android:versionCode="1"
     android:versionName="1.0" >
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET"/>
 	<uses-permission android:name="android.permission.CAMERA" />
 	<uses-feature android:name="android.hardware.camera" />
@@ -19,41 +21,42 @@
         <activity
             android:name="com.jiuling.connexus.MainActivity"
             android:label="@string/app_name" >
-            
-        </activity>
-        <activity
-            android:name="com.jiuling.connexus.ViewAllStreamsActivity"
-            android:label="@string/title_activity_view_all_streams" >
-            <intent-filter>
+             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            
+        </activity>
+        <activity
+            android:name="com.jiuling.connexus.ViewAllStreamsActivity"
+            android:label="@string/app_name" >
+           
         </activity>
         <activity
             android:name="com.jiuling.connexus.ViewSingleStreamActivity"
-            android:label="@string/title_activity_view_single_stream" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.jiuling.connexus.ViewNearbyImageActivity"
-            android:label="@string/title_activity_view_nearby_image" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.jiuling.connexus.ViewSubscribedStreamsActivity"
-            android:label="@string/title_activity_view_subscribed_streams" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.jiuling.connexus.ViewSearchResultActivity"
-            android:label="@string/title_activity_view_search_result" >
+            android:label="@string/app_name" >
         </activity>
         <activity
             android:name="com.jiuling.connexus.UploadImageActivity"
-            android:label="@string/title_activity_upload_image" >
+            android:label="@string/app_name" >
             
         </activity>
         <activity
             android:name="com.jiuling.connexus.UseCameraActivity"
-            android:label="@string/title_activity_use_camera" >
+            android:label="@string/app_name" >
         </activity>
     </application>
 

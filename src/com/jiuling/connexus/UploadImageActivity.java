@@ -10,6 +10,7 @@ import org.apache.commons.io.IOUtils;
 import com.google.common.*;
 
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.util.Log;
 import android.view.Menu;
 import android.view.TextureView;
 import android.view.View;
@@ -33,7 +35,36 @@ public class UploadImageActivity extends Activity {
 	private static int RESULT_LOAD_IMAGE = 1;
 	public final static String STREAMID="com.jiuling.connexus.STREAMID";
 	public final static String STREAMNAME="com.jiuling.connexus.STREAMNAME";
+	public final LocationListener mLocationListener01 = new LocationListener() {
+        @Override
+        public void onLocationChanged(Location location) {}
 
+        @Override
+        public void onProviderDisabled(String provider) {}
+
+        @Override
+        public void onProviderEnabled(String provider) {}
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {}
+	};
+	
+
+	
+
+	public static Location getLocation(Context context) {
+
+		LocationManager locMan = (LocationManager) context
+				.getSystemService(Context.LOCATION_SERVICE);
+		Location location = locMan
+				.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+		if(location==null){
+			location = locMan
+			.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+		}
+		return location;
+	}
+	
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +72,20 @@ public class UploadImageActivity extends Activity {
 		setContentView(R.layout.activity_upload_image);
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-        
+		LocationManager locMan = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        locMan.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 1000, 10,
+    			mLocationListener01);
+    	
+    	locMan.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10,
+    			mLocationListener01);
+    	
+    	Location mLocation = getLocation(this);
+    	if (mLocation!=null){
+    		TextView textView = (TextView)findViewById(R.id.upload_textview);
+    		textView.setText(mLocation.toString());
+    	}
+    	
+    	
         Intent intent = getIntent();
 		final Long streamId= intent.getLongExtra(ViewSingleStreamActivity.STREAMID, 0);
 	    final String streamName = intent.getStringExtra(ViewSingleStreamActivity.STREAMNAME);
@@ -71,13 +115,14 @@ public class UploadImageActivity extends Activity {
 				startActivityForResult(i, RESULT_LOAD_IMAGE);
 			}
 		});
-		TextView textView = (TextView)findViewById(R.id.upload_textview);
-		textView.setText("Stream : " + streamName);
+		//TextView textView = (TextView)findViewById(R.id.upload_textview);
+		//textView.setText("Stream : " + streamName);
 		
 		Button uploadImageButton = (Button)findViewById(R.id.upload_image_button);
 		uploadImageButton.setEnabled(false);
+		
 		uploadImageButton.setOnClickListener(new View.OnClickListener() {
-			
+		
 			@Override
 			public void onClick(View v) {
 				if (WebUtility.path != null){
@@ -91,15 +136,10 @@ public class UploadImageActivity extends Activity {
 					    Random r = new Random();
 					    double lat = r.nextDouble() * 180;
 				        double lng = r.nextDouble() * 180;
-				        Location mLocation = getLocation(v.getContext()); 
-				        if(mLocation!=null){
-				            lat=mLocation.getLatitude();
-				            lng=mLocation.getLongitude();
-				        }		    
+				          	    
 					    MobileImage image = new MobileImage(streamId, streamName, lng,lat, imageData);
 					    WebUtility.uploadImage(image);
-					    EditText msg = (EditText)findViewById(R.id.upload_msg_edittext);
-					    msg.setText("");
+					    
 					} catch (FileNotFoundException e) {
 					    e.printStackTrace();
 					} catch (IOException e) {
@@ -115,17 +155,7 @@ public class UploadImageActivity extends Activity {
 	}
 	
 	
-	public Location getLocation(Context context) {  
-        LocationManager locMan = (LocationManager) context  
-                .getSystemService(Context.LOCATION_SERVICE);  
-        Location location = locMan  
-                .getLastKnownLocation(LocationManager.GPS_PROVIDER);  
-        if (location == null) {  
-            location = locMan  
-                    .getLastKnownLocation(LocationManager.NETWORK_PROVIDER);  
-        }  
-        return location;  
-    }  
+	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
@@ -156,5 +186,7 @@ public class UploadImageActivity extends Activity {
 		getMenuInflater().inflate(R.menu.upload_image, menu);
 		return true;
 	}
+
+
 
 }

@@ -21,5 +21,6 @@
     <string name="camera">Use Camera</string>
     <string name="library">Choose from your library</string>
     <string name="addMsg">Add a meggage and/or tags</string>
-
+	<string name="sign_out_button_name">Sign out</string>
+	<string name="revoke_access_button_name">Revoke access</string>
 </resources>

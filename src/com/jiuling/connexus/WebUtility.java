@@ -34,7 +34,8 @@ public class WebUtility {
 	public static ArrayList<Stream> resultStreams = null;
 	public static int offsetOfStreams = 0;
 	
-	
+	public static String userName = "";
+	public static boolean userAvailable = false;
 	public static void makeHTTPPOSTRequest(String apiUrl, String tstJson) {
         try {
             HttpClient c = new DefaultHttpClient();        
@@ -68,8 +69,7 @@ public class WebUtility {
 		String apiUrl = "http://jiuling-connexus.appspot.com/mobileGetStreams?type="+type+"&keyword="+keyword+"&username="+username;
 		String returnedJson = null;
 		ArrayList<Stream> result = new ArrayList<Stream>();
-		
-		System.out.print("SHIT");
+
 	    try {
 	      returnedJson = Resources.toString( new URL(apiUrl), Charsets.UTF_8 );
 	    } catch (Exception e) {
