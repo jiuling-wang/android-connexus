@@ -13,6 +13,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import android.R.bool;
 import android.util.Log;
 
 import com.google.common.base.Charsets;
@@ -27,6 +28,13 @@ public class WebUtility {
 	
 	public static String path = new String();
 	public static String needRotate = "no";
+	public static ArrayList<ConnexusImage> resultImages = null;
+	public static int offsetOfImages = 0;
+	
+	public static ArrayList<Stream> resultStreams = null;
+	public static int offsetOfStreams = 0;
+	
+	
 	public static void makeHTTPPOSTRequest(String apiUrl, String tstJson) {
         try {
             HttpClient c = new DefaultHttpClient();        
@@ -52,6 +60,10 @@ public class WebUtility {
 		}
 	}
 	
+	public void increaseStreamView(Long streamId, String streamName){
+		String apiUrl = "http://jiuling-connexus.appspot.com/incStreamViews?streamId="+streamId+"&streamName="+streamName;
+		makeHTTPPOSTRequest(apiUrl, null);
+	}
 	public static ArrayList<Stream> getStreams(String type,String keyword, String username){
 		String apiUrl = "http://jiuling-connexus.appspot.com/mobileGetStreams?type="+type+"&keyword="+keyword+"&username="+username;
 		String returnedJson = null;

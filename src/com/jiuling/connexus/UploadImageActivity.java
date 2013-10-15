@@ -22,9 +22,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.view.Menu;
+import android.view.TextureView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class UploadImageActivity extends Activity {
 
@@ -40,19 +42,17 @@ public class UploadImageActivity extends Activity {
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
         
-        if (WebUtility.path != null){
-        	EditText msg = (EditText)findViewById(R.id.upload_msg_edittext);
-        	msg.setText(WebUtility.path);
-        }
+        Intent intent = getIntent();
+		final Long streamId= intent.getLongExtra(ViewSingleStreamActivity.STREAMID, 0);
+	    final String streamName = intent.getStringExtra(ViewSingleStreamActivity.STREAMNAME);
+	    
        
         Button uploadFromCameraButton = (Button) findViewById(R.id.upload_from_camera_button);
         uploadFromCameraButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				Intent intent = getIntent();
-				Long streamId= intent.getLongExtra(ViewSingleStreamActivity.STREAMID, 0);
-			    String streamName = intent.getStringExtra(ViewSingleStreamActivity.STREAMNAME);
+				
 			    
 			    Intent newIntent = new Intent(v.getContext(),UseCameraActivity.class);
 			    newIntent.putExtra(STREAMID, streamId);
@@ -71,8 +71,11 @@ public class UploadImageActivity extends Activity {
 				startActivityForResult(i, RESULT_LOAD_IMAGE);
 			}
 		});
+		TextView textView = (TextView)findViewById(R.id.upload_textview);
+		textView.setText("Stream : " + streamName);
+		
 		Button uploadImageButton = (Button)findViewById(R.id.upload_image_button);
-		uploadImageButton.setClickable(false);
+		uploadImageButton.setEnabled(false);
 		uploadImageButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -96,7 +99,7 @@ public class UploadImageActivity extends Activity {
 					    MobileImage image = new MobileImage(streamId, streamName, lng,lat, imageData);
 					    WebUtility.uploadImage(image);
 					    EditText msg = (EditText)findViewById(R.id.upload_msg_edittext);
-					    msg.setText("lat="+lat+"lng="+lng);
+					    msg.setText("");
 					} catch (FileNotFoundException e) {
 					    e.printStackTrace();
 					} catch (IOException e) {
@@ -140,10 +143,8 @@ public class UploadImageActivity extends Activity {
 			WebUtility.path = cursor.getString(columnIndex);
 			WebUtility.needRotate="no";
 			cursor.close();
-			EditText msg = (EditText)findViewById(R.id.upload_msg_edittext);
-			msg.setText(WebUtility.path);
 			Button uploadImageButton = (Button)findViewById(R.id.upload_image_button);
-			uploadImageButton.setClickable(true);
+			uploadImageButton.setEnabled(true);
 			
 		}
 

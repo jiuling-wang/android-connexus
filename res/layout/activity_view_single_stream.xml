@@ -30,9 +30,19 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/single_stream_gridview" 
-        android:text="@string/morePictures"
+        android:text="View Older"
         android:verticalSpacing="10dp"
         android:onClick="viewMorePictures"
+        />
+    <Button
+        android:id="@+id/single_stream_less_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/single_stream_gridview" 
+        android:layout_toRightOf="@id/single_stream_more_button" 
+        android:text="View Newer"
+        android:verticalSpacing="10dp"
+        android:onClick="viewLessPictures"
         />
     <Button
         android:id="@+id/single_stream_upload_button"

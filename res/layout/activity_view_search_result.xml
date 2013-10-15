@@ -43,11 +43,20 @@
     	android:layout_below="@id/search_result_textview"/>
 	 <Button
         android:id="@+id/search_result_more"
-        android:layout_width="250dp"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/search_result_gridview" 
-        android:text="More search results"
+        android:text="More results"
         android:verticalSpacing="30dp"
         android:onClick="searchMore"/>  
+      <Button
+        android:id="@+id/search_result_less"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/search_result_gridview" 
+        android:layout_toRightOf="@id/search_result_more"
+        android:text="Less results"
+        android:verticalSpacing="30dp"
+        android:onClick="searchLess"/>  
 	    
 </RelativeLayout>

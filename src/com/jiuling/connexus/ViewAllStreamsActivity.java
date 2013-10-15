@@ -32,11 +32,12 @@ public class ViewAllStreamsActivity extends Activity {
 		setContentView(R.layout.activity_view_all_streams);
 		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
-		
 
         GridView gridView = (GridView)findViewById(R.id.all_stream_gridview);
 		
 		final ArrayList<Stream> result = WebUtility.getStreams("all", null, null);
+		
+		
 		
 		gridView.setAdapter(new ImageTextAdapter(this,result));
 		

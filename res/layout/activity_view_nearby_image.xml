@@ -19,25 +19,25 @@
     	android:stretchMode="columnWidth"
     	android:gravity="center"
 	/>
-    <TextView 
-        android:id="@+id/nearby_textview"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content" 
-        android:gravity="left"
-        android:horizontalSpacing="30dp"
-        android:verticalSpacing="30dp"
-        android:layout_below="@id/nearby_gridview" 
-        android:text="Nearby pictures"
-        />
+    
     <Button
         android:id="@+id/nearby_more_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_below="@id/nearby_gridview" 
-        android:layout_toRightOf="@id/nearby_textview"
         android:text="More"
         android:onClick="viewMoreNearby"
         />
+    <Button
+        android:id="@+id/nearby_less_button"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nearby_gridview" 
+        android:layout_toRightOf="@id/nearby_more_button"
+        android:text="Less"
+        android:onClick="viewLessNearby"
+        />
+    
     <Button
         android:id="@+id/nearby_stream_back_button"
         android:layout_width="250dp"
