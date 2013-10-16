@@ -9,39 +9,52 @@
     tools:context=".UploadImageActivity" >
 
     <Button
+        style="@style/CodeFont"
         android:id="@+id/upload_from_library_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/library"
-        android:verticalSpacing="30dp"
-        android:onClick="uploadFromLibrary"/>
+        android:onClick="uploadFromLibrary"
+        android:text="Choose from gallery"
+        android:layout_marginBottom="30dip" />
+
     <Button
+        style="@style/CodeFont"
         android:id="@+id/upload_from_camera_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/camera"
+        android:layout_alignLeft="@+id/upload_from_library_button"
+        android:layout_alignRight="@+id/upload_from_library_button"
         android:layout_below="@id/upload_from_library_button"
-        android:verticalSpacing="30dp"
-        android:onClick="uploadFromCamera"/>
+        android:onClick="uploadFromCamera"
+        android:text="Use your camera"
+        android:layout_marginBottom="30dip" />
+
     <EditText
         android:id="@+id/upload_msg_edittext"
         android:layout_width="150dp"
-        android:layout_height="wrap_content" 
-        android:gravity="left"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/upload_from_camera_button"
+        android:layout_alignRight="@+id/upload_from_library_button"
         android:layout_below="@id/upload_from_camera_button"
-        android:horizontalSpacing="30dp"
-        android:verticalSpacing="30dp"
+        android:gravity="left"
         android:inputType="text"
-        android:text="@string/addMsg"/>
+        android:text="@string/addMsg"
+        android:layout_marginBottom="30dip" />
+
     <Button
+        style="@style/CodeFont2"
         android:id="@+id/upload_image_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Upload"
+        android:layout_alignLeft="@+id/upload_msg_edittext"
+        android:layout_alignRight="@+id/upload_msg_edittext"
         android:layout_below="@id/upload_msg_edittext"
-        android:verticalSpacing="30dp"
-        android:onClick="uploadImage"/>
+        android:onClick="uploadImage"
+        android:text="Upload"
+        android:layout_marginBottom="30dip" />
+
 	<TextView 
+	    style="@style/CodeFont"
 	    android:id="@+id/upload_textview"
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"

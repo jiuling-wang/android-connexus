@@ -201,10 +201,10 @@ containing a value of this type.
         public static final int all_stream_search_button=0x7f050015;
         public static final int all_stream_search_edittext=0x7f050014;
         public static final int all_stream_subscribed_button=0x7f050017;
-        public static final int camera_back_button=0x7f050012;
-        public static final int camera_capture_button=0x7f050010;
+        public static final int camera_back_button=0x7f050011;
+        public static final int camera_capture_button=0x7f050012;
         public static final int camera_preview=0x7f05000f;
-        public static final int camera_select_button=0x7f050011;
+        public static final int camera_select_button=0x7f050010;
         public static final int grid_image=0x7f050028;
         public static final int grid_text=0x7f050029;
         public static final int hybrid=0x7f050004;
@@ -399,6 +399,8 @@ containing a value of this type.
  All customizations that are NOT specific to a particular API-level can go here. 
          */
         public static final int AppTheme=0x7f080001;
+        public static final int CodeFont=0x7f080002;
+        public static final int CodeFont2=0x7f080003;
     }
     public static final class styleable {
         /** Attributes that can be used with a MapAttrs.

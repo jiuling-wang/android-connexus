@@ -19,7 +19,7 @@ import android.widget.GridView;
 import android.widget.AdapterView.OnItemClickListener;
 
 public class ViewAllStreamsActivity extends Activity {
-	private LocationManager manager;  
+	
 	public final static String STREAMID="com.jiuling.connexus.STREAMID";
 	public final static String STREAMNAME="com.jiuling.connexus.STREAMNAME";
 	public final static String KEYWORD="com.jiuling.connexus.KEYWORD";
@@ -88,19 +88,6 @@ public class ViewAllStreamsActivity extends Activity {
 	
 	public void searchNearby(View view){
 		Intent intent = new Intent(this,ViewNearbyImageActivity.class);
-		
-        double lat = 0;
-        double lng = 0;
-        Location mLocation = getLocation(this); 
-        if(mLocation!=null){
-            lat=mLocation.getLatitude();
-            lng=mLocation.getLongitude();
-        }
-
-		intent.putExtra(LATITUDE, lat);
-        intent.putExtra(LONGITUDE, lng);
-		
-		
 		startActivity(intent);
 	}
 	

@@ -10,6 +10,7 @@
         android:layout_marginBottom="30dip"/>
 
     <Button
+        style="@style/CodeFont"
         android:id="@+id/sign_out_button"
         android:layout_below="@id/sign_in_button"
         android:layout_width="wrap_content"
@@ -19,13 +20,16 @@
         android:enabled="false" />
 
     <TextView
+        style="@style/CodeFont"
         android:id="@+id/sign_in_status"
         android:layout_below="@id/sign_out_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="30dip"
         android:text="Not signed in" />
     
     <Button
+        style="@style/CodeFont"
         android:id="@+id/all_stream_button"
         android:layout_below="@id/sign_in_status"
         android:layout_width="wrap_content"

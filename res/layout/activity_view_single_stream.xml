@@ -9,23 +9,26 @@
     tools:context=".ViewSingleStreamActivity" >
 
     <TextView
+        style="@style/CodeFont"
         android:id="@+id/single_stream_textview"
-        android:layout_width="wrap_content"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:textSize="20sp"
         android:text="@string/view_single_stream" />
     <GridView 
     	android:id="@+id/single_stream_gridview"
     	android:layout_below="@id/single_stream_textview"
     	android:layout_width="fill_parent" 
     	android:layout_height="wrap_content"
-    	android:columnWidth="100dp"
     	android:numColumns="4"
-    	android:verticalSpacing="10dp"
-    	android:horizontalSpacing="10dp"
+    	android:verticalSpacing="0dp"
+    	android:horizontalSpacing="0dp"
     	android:stretchMode="columnWidth"
     	android:gravity="center"
+    	android:layout_marginBottom="20dip"
 	/>
     <Button
+        style="@style/CodeFont2"
         android:id="@+id/single_stream_more_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -33,8 +36,10 @@
         android:text="View Older"
         android:verticalSpacing="10dp"
         android:onClick="viewMorePictures"
+        android:layout_marginBottom="10dip"
         />
     <Button
+        style="@style/CodeFont2"
         android:id="@+id/single_stream_less_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -43,8 +48,10 @@
         android:text="View Newer"
         android:verticalSpacing="10dp"
         android:onClick="viewLessPictures"
+        android:layout_marginBottom="10dip"
         />
     <Button
+        style="@style/CodeFont"
         android:id="@+id/single_stream_upload_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -54,10 +61,12 @@
         android:onClick="uploadNewImage"
         />
     <Button
+        style="@style/CodeFont"
         android:id="@+id/single_stream_back_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/single_stream_upload_button" 
+        android:layout_below="@id/single_stream_more_button" 
+        android:layout_toRightOf="@id/single_stream_upload_button"
         android:text="@string/back"
         android:verticalSpacing="10dp"
         android:onClick="gotoViewAllStreams"

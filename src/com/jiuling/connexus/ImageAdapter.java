@@ -18,12 +18,15 @@ import android.widget.ImageView;
 public class ImageAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<ConnexusImage> images;
+    private LayoutInflater layoutInflater;
     
     public ImageAdapter(Context c) {
         mContext = c;
+        layoutInflater = LayoutInflater.from(mContext);
     }
     public ImageAdapter(Context c,ArrayList<ConnexusImage> images) {
         mContext = c;
+        layoutInflater = LayoutInflater.from(mContext);
         this.images = images;
     }
     
@@ -41,15 +44,14 @@ public class ImageAdapter extends BaseAdapter {
 
     // create a new ImageView for each item referenced by the Adapter
     public View getView(int position, View convertView, ViewGroup parent) {
-        ImageView imageView;
-        if (convertView == null) {  // if it's not recycled, initialize some attributes
-            imageView = new ImageView(mContext);
-            imageView.setLayoutParams(new GridView.LayoutParams(85, 85));
-            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-            imageView.setPadding(8, 8, 8, 8);
-        } else {
-            imageView = (ImageView) convertView;
-        }
+    	View grid;
+    	if (convertView == null){
+    		grid = new View(mContext);
+    	    grid = layoutInflater.inflate(R.layout.grid_layout, null); 
+    	}else{
+    		grid = (View)convertView;
+    	}
+    	ImageView imageView = (ImageView)grid.findViewById(R.id.grid_image);
         URL newurl = null;
 		try {
 			newurl = new URL(images.get(position).bkUrl);
@@ -64,9 +66,8 @@ public class ImageAdapter extends BaseAdapter {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-    	imageView.setImageBitmap(mIcon_val);
-       
-        return imageView;
+		imageView.setImageBitmap(mIcon_val);
+        return grid;
     }
 
     

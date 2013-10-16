@@ -12,15 +12,15 @@
     	android:id="@+id/nearby_gridview"
     	android:layout_width="fill_parent" 
     	android:layout_height="wrap_content"
-    	android:columnWidth="100dp"
     	android:numColumns="4"
-    	android:verticalSpacing="10dp"
-    	android:horizontalSpacing="10dp"
-    	android:stretchMode="columnWidth"
+		android:verticalSpacing="0dp"
+        android:horizontalSpacing="0dp"
+        android:stretchMode="columnWidth"
     	android:gravity="center"
 	/>
     
     <Button
+        style="@style/CodeFont2"
         android:id="@+id/nearby_more_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -29,6 +29,7 @@
         android:onClick="viewMoreNearby"
         />
     <Button
+        style="@style/CodeFont2"
         android:id="@+id/nearby_less_button"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
@@ -39,6 +40,7 @@
         />
     
     <Button
+        style="@style/CodeFont"
         android:id="@+id/nearby_stream_back_button"
         android:layout_width="250dp"
         android:layout_height="wrap_content"

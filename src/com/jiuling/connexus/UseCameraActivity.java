@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 import android.hardware.Camera;
 import android.hardware.Camera.PictureCallback;
 import android.os.Bundle;
@@ -49,8 +50,7 @@ public class UseCameraActivity extends Activity {
 				Intent intent = getIntent();
 				Long streamId= intent.getLongExtra(UploadImageActivity.STREAMID, 0);
 			    String streamName = intent.getStringExtra(UploadImageActivity.STREAMNAME);
-			    Button uploadImageButton = (Button)findViewById(R.id.upload_image_button);
-				uploadImageButton.setEnabled(true);
+			    WebUtility.picAvailable = true;
 			    Intent newIntent = new Intent(v.getContext(),UploadImageActivity.class);
 			    newIntent.putExtra(UploadImageActivity.STREAMID, streamId);
 			    newIntent.putExtra(UploadImageActivity.STREAMNAME, streamName);

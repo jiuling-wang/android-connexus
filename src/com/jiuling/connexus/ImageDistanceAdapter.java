@@ -75,8 +75,8 @@ public class ImageDistanceAdapter extends BaseAdapter {
     	TextView textView = (TextView)grid.findViewById(R.id.grid_text);
     	double lat = images.get(position).latitude;
     	double lon = images.get(position).longitude;
-    	double distance = Math.sqrt((lat-latitude)*(lat-latitude)+ (lon-longitude)*(lon-longitude));
-    	textView.setText(Double.toString(distance));
+    	int distance = (int) Math.sqrt((lat-latitude)*(lat-latitude)+ (lon-longitude)*(lon-longitude));
+    	textView.setText(Integer.toString(distance));
     	
     	return grid;
     }

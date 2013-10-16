@@ -13,33 +13,39 @@
     android:id="@+id/camera_preview"
     android:layout_width="240dp"
     android:layout_height="320dp"
-    android:verticalSpacing="30dp"
+    android:layout_marginBottom="15dip"
     android:layout_centerHorizontal="true"/>
+  	
+  	<Button
+  	    style="@style/CodeFont2"
+  	    android:id="@+id/camera_select_button"
+  	    android:layout_width="wrap_content"
+  	    android:layout_height="wrap_content"
+  	    android:layout_alignRight="@+id/camera_preview"
+  	    android:layout_below="@id/camera_preview"
+  	    android:layout_toRightOf="@+id/camera_back_button"
+  	    android:text="Use it" />
 
   	<Button
-    android:id="@+id/camera_capture_button"
-    android:text="Take a Picture"
-    android:layout_below="@id/camera_preview"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:verticalSpacing="30dp"/>
-  	
+  	    style="@style/CodeFont"
+  	    android:id="@+id/camera_capture_button"
+  	    android:layout_width="wrap_content"
+  	    android:layout_height="wrap_content"
+  	    android:layout_alignLeft="@+id/camera_back_button"
+  	    android:layout_alignRight="@+id/camera_back_button"
+  	    android:layout_alignTop="@+id/camera_select_button"
+  	    android:text="Take a Picture"
+  	     />
+
   	<Button
-    android:id="@+id/camera_select_button"
-    android:text="Use this picture"
-    android:layout_toRightOf="@id/camera_capture_button"
-    android:layout_below="@id/camera_preview"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:verticalSpacing="30dp"/>
-  	
-  	<Button
-	android:id="@+id/camera_back_button"
-    android:text="View all streams"
-    android:layout_below="@id/camera_capture_button"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:verticalSpacing="30dp"/>
-  	
+  	    style="@style/CodeFont"
+  	    android:id="@+id/camera_back_button"
+  	    android:layout_width="wrap_content"
+  	    android:layout_height="wrap_content"
+  	    android:layout_alignParentBottom="true"
+  	    android:layout_alignParentLeft="true"
+  	    android:layout_marginLeft="16dp"
+  	    android:text="View all streams"
+  	    android:verticalSpacing="30dp" />
   	
 </RelativeLayout>

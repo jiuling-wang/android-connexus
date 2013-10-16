@@ -12,25 +12,26 @@
     	android:id="@+id/all_stream_gridview"
     	android:layout_width="fill_parent" 
     	android:layout_height="wrap_content"
-    	android:columnWidth="100dp"
     	android:numColumns="4"
-    	android:verticalSpacing="10dp"
-    	android:horizontalSpacing="10dp"
+    	android:verticalSpacing="0dp"
+        android:horizontalSpacing="0dp"
     	android:stretchMode="columnWidth"
     	android:gravity="center"
+    	android:layout_marginBottom="30dip"
 	/>
     <EditText
         android:id="@+id/all_stream_search_edittext"
         android:layout_width="150dp"
         android:layout_height="wrap_content" 
         android:gravity="left"
-        android:horizontalSpacing="30dp"
-        android:verticalSpacing="10dp"
+        android:layout_marginRight="10dip"
+        android:layout_marginBottom="30dip"
         android:layout_below="@id/all_stream_gridview" 
         android:inputType="text"/>
     <Button
+        style="@style/CodeFont"
         android:id="@+id/all_stream_search_button"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/all_stream_gridview" 
         android:layout_toRightOf="@id/all_stream_search_edittext"
@@ -38,6 +39,7 @@
         android:onClick="searchSpecified"
         />
     <Button
+        style="@style/CodeFont"
         android:id="@+id/all_stream_nearby_button"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
@@ -45,8 +47,10 @@
         android:layout_below="@id/all_stream_search_edittext"
         android:text="@string/nearby"
         android:onClick="searchNearby"
+        android:layout_marginBottom="30dip"
         />
     <Button
+        style="@style/CodeFont"
         android:id="@+id/all_stream_subscribed_button"
         android:layout_width="300dp"
         android:layout_height="wrap_content"

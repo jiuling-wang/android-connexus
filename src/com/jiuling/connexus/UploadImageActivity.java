@@ -79,11 +79,6 @@ public class UploadImageActivity extends Activity {
     	locMan.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10,
     			mLocationListener01);
     	
-    	Location mLocation = getLocation(this);
-    	if (mLocation!=null){
-    		TextView textView = (TextView)findViewById(R.id.upload_textview);
-    		textView.setText(mLocation.toString());
-    	}
     	
     	
         Intent intent = getIntent();
@@ -115,8 +110,8 @@ public class UploadImageActivity extends Activity {
 				startActivityForResult(i, RESULT_LOAD_IMAGE);
 			}
 		});
-		//TextView textView = (TextView)findViewById(R.id.upload_textview);
-		//textView.setText("Stream : " + streamName);
+		TextView textView = (TextView)findViewById(R.id.upload_textview);
+		textView.setText("Stream : " + streamName);
 		
 		Button uploadImageButton = (Button)findViewById(R.id.upload_image_button);
 		uploadImageButton.setEnabled(false);
@@ -133,11 +128,15 @@ public class UploadImageActivity extends Activity {
 					    Intent intent = getIntent();
 					    Long streamId= intent.getLongExtra(ViewSingleStreamActivity.STREAMID, 0);
 					    String streamName = intent.getStringExtra(ViewSingleStreamActivity.STREAMNAME);
-					    Random r = new Random();
-					    double lat = r.nextDouble() * 180;
-				        double lng = r.nextDouble() * 180;
-				          	    
-					    MobileImage image = new MobileImage(streamId, streamName, lng,lat, imageData);
+					    Location mLocation = getLocation(v.getContext());
+					    double lat = 0;
+				        double lng = 0;
+				    	if (mLocation!=null){
+				    		lat = mLocation.getLatitude();
+				    		lng = mLocation.getLongitude();
+				    		
+				    	}
+				    	MobileImage image = new MobileImage(streamId, streamName, lng,lat, imageData);
 					    WebUtility.uploadImage(image);
 					    
 					} catch (FileNotFoundException e) {
@@ -153,8 +152,18 @@ public class UploadImageActivity extends Activity {
 			}
 		});
 	}
-	
-	
+	protected void onStart(){
+		super.onStart();
+		if (WebUtility.picAvailable){
+		    Button uploadImageButton = (Button)findViewById(R.id.upload_image_button);
+			uploadImageButton.setEnabled(true);
+		}
+	}
+	protected void onStop(){
+		super.onStop();
+		WebUtility.picAvailable = false;
+		WebUtility.path = new String();
+	}
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -173,6 +182,7 @@ public class UploadImageActivity extends Activity {
 			WebUtility.path = cursor.getString(columnIndex);
 			WebUtility.needRotate="no";
 			cursor.close();
+			WebUtility.picAvailable = true;
 			Button uploadImageButton = (Button)findViewById(R.id.upload_image_button);
 			uploadImageButton.setEnabled(true);
 			

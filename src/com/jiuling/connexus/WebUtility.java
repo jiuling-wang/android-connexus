@@ -25,7 +25,7 @@ import com.google.gson.reflect.TypeToken;
 
 public class WebUtility {
 	
-	
+	public static boolean picAvailable = false;
 	public static String path = new String();
 	public static String needRotate = "no";
 	public static ArrayList<ConnexusImage> resultImages = null;
